@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "Helloworld",
+  "short_name": "Helloworld",
+  "description": "Description for Helloworld",
+
+  "version": "0.0.1.1",
+
+  "icons": {
+    "16": "assets/icon_16.png",
+    "128": "assets/icon_128.png"
+  },
+
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  },
+
+  "permissions": [
+    "system.cpu",
+    "system.memory"
+  ]
+}
