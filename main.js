@@ -16,6 +16,14 @@ window.onload = function() {
   window.setInterval(UpdateAll, 2000);
 };
 
+function Byte2MiB(byte) {
+  return byte/1048576;
+}
+
+function Byte2GiB(byte) {
+  return byte/1073741824;
+}
+
 function UpdateCpu() {
   var cpu = document.querySelector('#usage');
   cpu.innerHTML = '<tr><th width="25%">cpu</th>' +
@@ -49,7 +57,25 @@ function UpdateMem() {
   });
 }
 
+function UpdateSto() {
+  var sto = document.querySelector('#storage');
+  sto.innerHTML = '<tr><th width="40%">uuid</th>' +
+                  '<th width="20%">name</th>' +
+                  '<th width="20%">type</th>' +
+                  '<th width="20%">capacity (MiB)</th></tr>';
+  chrome.system.storage.getInfo(function(s) {
+    for (var i = 0; i < s.length; i++) {
+      sto.innerHTML += '<tr><td>' + s[i].id +
+                       '</td><td>' + s[i].name +
+                       '</td><td>' + s[i].type +
+                       '</td><td>' + Math.round(Byte2MiB(s[i].capacity)) +
+                       '</td></tr>';
+    }
+  });
+}
+
 function UpdateAll() {
   UpdateCpu();
   UpdateMem();
+  UpdateSto();
 }

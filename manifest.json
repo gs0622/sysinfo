@@ -19,6 +19,7 @@
 
   "permissions": [
     "system.cpu",
-    "system.memory"
+    "system.memory",
+    "system.storage"
   ]
 }
