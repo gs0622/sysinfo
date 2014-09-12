@@ -13,7 +13,7 @@ window.onload = function() {
     old = c;
   });
   UpdateAll();
-  window.setInterval(UpdateAll, 2000);
+  window.setInterval(UpdateAll, 1000);
 };
 
 function Byte2MiB(byte) {
@@ -57,9 +57,9 @@ function UpdateMem() {
   });
 }
 
-function UpdateSto() {
+function UpdateStorage() {
   var sto = document.querySelector('#storage');
-  sto.innerHTML = '<tr><th width="40%">uuid</th>' +
+  sto.innerHTML = '<tr><th width="40%">id</th>' +
                   '<th width="20%">name</th>' +
                   '<th width="20%">type</th>' +
                   '<th width="20%">capacity (MiB)</th></tr>';
@@ -74,8 +74,25 @@ function UpdateSto() {
   });
 }
 
+function UpdateDisplay() {
+  var lcd = document.querySelector('#display');
+  lcd.innerHTML = '<tr><th width="25%">primary</th><th width="25%">name</th>' +
+                  '<th width="25%">resolution</th>' +
+                  '<th width="25%">dpi</th>';
+  chrome.system.display.getInfo(function(d) {
+    for (var i = 0; i < d.length; i++) {
+      lcd.innerHTML += '<tr><td>' + d[i].isPrimary +
+                       '</td><td>' + d[i].name +
+                       '</td><td>' + d[i].bounds.width +
+                       'x' + d[i].bounds.height +
+                       '</td><td>' + d[i].dpiX + '</td></tr>';
+    }
+  });
+}
+
 function UpdateAll() {
   UpdateCpu();
   UpdateMem();
-  UpdateSto();
+  UpdateStorage();
+  UpdateDisplay();
 }
