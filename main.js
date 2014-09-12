@@ -26,7 +26,7 @@ function Byte2GiB(byte) {
 
 function UpdateCpu() {
   var cpu = document.querySelector('#usage');
-  cpu.innerHTML = '<tr><th width="25%">cpu</th>' +
+  var htm = '<tr><th width="25%">cpu</th>' +
                   '<th width="25%">user</th>' +
                   '<th width="25%">kernel</th>' +
                   '<th width="25%">idle</th></tr>';
@@ -37,56 +37,60 @@ function UpdateCpu() {
       var kernel = c.processors[i].usage.kernel -
                    old.processors[i].usage.kernel;
       var idle = c.processors[i].usage.idle - old.processors[i].usage.idle;
-      cpu.innerHTML += '<tr><th>' + i + '</th>' +
+      htm += '<tr><th>' + i + '</th>' +
                        '<td>' + Math.round(user/total*100) + '</td>' +
                        '<td>' + Math.round(kernel/total*100) + '</td>' +
                        '<td>' + Math.round(idle/total*100) + '</td></tr>';
     }
+    cpu.innerHTML = htm;
     old = c;
   });
 }
 
 function UpdateMem() {
   var mem = document.querySelector('#memory');
-  mem.innerHTML = '<tr><th width="50%">total (MiB)'+
+  var htm = '<tr><th width="50%">total (MiB)'+
                   '</th><th>available (MiB)</th></tr>';
   chrome.system.memory.getInfo(function(m) {
-    mem.innerHTML += '<tr><td>' + Math.round(m.capacity/1048576) +
+    htm += '<tr><td>' + Math.round(m.capacity/1048576) +
                      '</td><td>' + Math.round(m.availableCapacity/1048576) +
                      '</td></tr>';
+    mem.innerHTML = htm;
   });
 }
 
 function UpdateStorage() {
   var sto = document.querySelector('#storage');
-  sto.innerHTML = '<tr><th width="40%">id</th>' +
+  var htm = '<tr><th width="40%">id</th>' +
                   '<th width="20%">name</th>' +
                   '<th width="20%">type</th>' +
                   '<th width="20%">capacity (MiB)</th></tr>';
   chrome.system.storage.getInfo(function(s) {
     for (var i = 0; i < s.length; i++) {
-      sto.innerHTML += '<tr><td>' + s[i].id +
+      htm += '<tr><td>' + s[i].id +
                        '</td><td>' + s[i].name +
                        '</td><td>' + s[i].type +
                        '</td><td>' + Math.round(Byte2MiB(s[i].capacity)) +
                        '</td></tr>';
     }
+    sto.innerHTML = htm;
   });
 }
 
 function UpdateDisplay() {
   var lcd = document.querySelector('#display');
-  lcd.innerHTML = '<tr><th width="25%">primary</th><th width="25%">name</th>' +
+  var htm = '<tr><th width="25%">primary</th><th width="25%">name</th>' +
                   '<th width="25%">resolution</th>' +
                   '<th width="25%">dpi</th>';
   chrome.system.display.getInfo(function(d) {
     for (var i = 0; i < d.length; i++) {
-      lcd.innerHTML += '<tr><td>' + d[i].isPrimary +
+      htm += '<tr><td>' + d[i].isPrimary +
                        '</td><td>' + d[i].name +
                        '</td><td>' + d[i].bounds.width +
                        'x' + d[i].bounds.height +
                        '</td><td>' + d[i].dpiX + '</td></tr>';
     }
+    lcd.innerHTML = htm;
   });
 }
 
