@@ -7,11 +7,13 @@ window.onload = function() {
                      '</td></tr>';
     cpu.innerHTML += '<tr><th>arch name</th><td>' + c.archName + '</td></tr>';
     cpu.innerHTML += '<tr><th>feature</th><td>' + c.features + '</td></tr>';
+    old = c;
+    var nav = navigator;
+    cpu.innerHTML += '<tr><th>user agent</th><td>' + nav.userAgent +
+                     '</td></tr><tr><th>platform</th><td>' + nav.platform +
+                     '</td></tr>';
   });
 
-  chrome.system.cpu.getInfo(function(c) {
-    old = c;
-  });
   UpdateAll();
   window.setInterval(UpdateAll, 1000);
 };
