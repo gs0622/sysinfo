@@ -1,8 +1,9 @@
 var old; // Old CpuInfo
+var sys = chrome.system;
 
 window.onload = function() {
   var cpu = document.querySelector('#info');
-  chrome.system.cpu.getInfo(function(c) {
+  sys.cpu.getInfo(function(c) {
     cpu.innerHTML += '<tr><th width="25%">model name</th><td>' + c.modelName +
                      '</td></tr>';
     cpu.innerHTML += '<tr><th>arch name</th><td>' + c.archName + '</td></tr>';
@@ -32,7 +33,7 @@ function UpdateCpu() {
                   '<th width="25%">user</th>' +
                   '<th width="25%">kernel</th>' +
                   '<th width="25%">idle</th></tr>';
-  chrome.system.cpu.getInfo(function(c) {
+  sys.cpu.getInfo(function(c) {
     for (var i = 0; i < c.numOfProcessors; i++) {
       var total = c.processors[i].usage.total - old.processors[i].usage.total;
       var user = c.processors[i].usage.user - old.processors[i].usage.user;
@@ -53,7 +54,7 @@ function UpdateMem() {
   var mem = document.querySelector('#memory');
   var htm = '<tr><th width="50%">total (MiB)'+
                   '</th><th>available (MiB)</th></tr>';
-  chrome.system.memory.getInfo(function(m) {
+  sys.memory.getInfo(function(m) {
     htm += '<tr><td>' + Math.round(m.capacity/1048576) +
                      '</td><td>' + Math.round(m.availableCapacity/1048576) +
                      '</td></tr>';
@@ -67,7 +68,7 @@ function UpdateStorage() {
                   '<th width="20%">name</th>' +
                   '<th width="20%">type</th>' +
                   '<th width="20%">capacity (MiB)</th></tr>';
-  chrome.system.storage.getInfo(function(s) {
+  sys.storage.getInfo(function(s) {
     for (var i = 0; i < s.length; i++) {
       htm += '<tr><td>' + s[i].id +
                        '</td><td>' + s[i].name +
@@ -84,7 +85,7 @@ function UpdateDisplay() {
   var htm = '<tr><th width="25%">primary</th><th width="25%">name</th>' +
                   '<th width="25%">resolution</th>' +
                   '<th width="25%">dpi</th>';
-  chrome.system.display.getInfo(function(d) {
+  sys.display.getInfo(function(d) {
     for (var i = 0; i < d.length; i++) {
       htm += '<tr><td>' + d[i].isPrimary +
                        '</td><td>' + d[i].name +
