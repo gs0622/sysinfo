@@ -68,16 +68,21 @@ function UpdateStorage() {
                   '<th width="20%">name</th>' +
                   '<th width="20%">type</th>' +
                   '<th width="20%">capacity (MiB)</th></tr>';
-  sys.storage.getInfo(function(s) {
-    for (var i = 0; i < s.length; i++) {
-      htm += '<tr><td>' + s[i].id +
-                       '</td><td>' + s[i].name +
-                       '</td><td>' + s[i].type +
-                       '</td><td>' + Math.round(Byte2MiB(s[i].capacity)) +
-                       '</td></tr>';
-    }
-    sto.innerHTML = htm;
-  });
+  try {
+    sys.storage.getInfo(function(s) {
+      for (var i = 0; i < s.length; i++) {
+        htm += '<tr><td>' + s[i].id +
+                         '</td><td>' + s[i].name +
+                         '</td><td>' + s[i].type +
+                         '</td><td>' + Math.round(Byte2MiB(s[i].capacity)) +
+                         '</td></tr>';
+      }
+      sto.innerHTML = htm;
+    });
+  }
+  catch(err) {
+    sto.innerHTML = htm + '<tr><td colspan="4">N/A</td></tr>';
+  }
 }
 
 function UpdateDisplay() {
