@@ -3,9 +3,8 @@
   "name": "Helloworld",
   "short_name": "Helloworld",
   "description": "Description for Helloworld",
-
   "version": "0.0.1.1",
-
+  "minimum_chrome_version": "30",
   "icons": {
     "16": "assets/icon_16.png",
     "128": "assets/icon_128.png"
@@ -21,6 +20,7 @@
     "system.cpu",
     "system.memory",
     "system.storage",
-    "system.display"
+    "system.display",
+    "system.network"
   ]
 }

@@ -97,9 +97,22 @@ function UpdateDisplay() {
   });
 }
 
+function UpdateNetwork() {
+  var net = document.querySelector('#network');
+  var htm = '<tr><th width="50%">name</th><th>address</th></tr>';
+  sys.network.getNetworkInterfaces(function(n) {
+    for (var i = 0; i < n.length; i++) {
+      htm += '<tr><td>' + n[i].name + '</td><td>' + n[i].address +
+             '</td></tr>';
+    }
+    net.innerHTML = htm;
+  });
+}
+
 function UpdateAll() {
   UpdateCpu();
   UpdateMem();
   UpdateStorage();
   UpdateDisplay();
+  UpdateNetwork();
 }
