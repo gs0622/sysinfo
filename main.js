@@ -3,9 +3,7 @@ var sys = chrome.system;
 
 window.onload = function() {
   var cpu = document.querySelector('#info');
-  var htm = '<tr><th width="25%">model name</th><td>NaN</td></tr>' +
-            '<tr><th>arch name</th><td>NaN</td></tr>' +
-            '<tr><th>feature</th><td>NaN</td></tr>';
+  var htm = '';
   try {
     //throw "cpu";
     sys.cpu.getInfo(function(c) {
@@ -21,8 +19,10 @@ window.onload = function() {
       cpu.innerHTML = htm;
     });
   }
-  catch (err) {
-    // chrome.system.cpu not supported
+  catch (err) { // not supported
+    htm = '<tr><th width="25%">model name</th><td>NaN</td></tr>' +
+          '<tr><th>arch name</th><td>NaN</td></tr>' +
+          '<tr><th>feature</th><td>NaN</td></tr>'
   }
   cpu.innerHTML = htm;
   UpdateAll();
@@ -33,10 +33,6 @@ function Byte2MiB(byte) {
   return byte/1048576;
 }
 
-function Byte2GiB(byte) {
-  return byte/1073741824;
-}
-
 function UpdateCpu() {
   var cpu = document.querySelector('#usage');
   var htm = '<tr><th width="25%">cpu</th>' +
@@ -44,7 +40,6 @@ function UpdateCpu() {
                   '<th width="25%">kernel</th>' +
                   '<th width="25%">idle</th></tr>';
   try {
-    //throw "cpu";
     sys.cpu.getInfo(function(c) {
       for (var i = 0; i < c.numOfProcessors; i++) {
         var total = c.processors[i].usage.total - old.processors[i].usage.total;
@@ -62,7 +57,6 @@ function UpdateCpu() {
     });
   }
   catch (err) {
-    // chrome.system.cpu not supported
     cpu.innerHTML = htm + '<tr><td colspan="4">NaN</td></tr>';
   }
 }
@@ -72,7 +66,6 @@ function UpdateMem() {
   var htm = '<tr><th width="50%">total (MiB)'+
                   '</th><th>available (MiB)</th></tr>';
   try {
-    //throw "memory";
     sys.memory.getInfo(function(m) {
       htm += '<tr><td>' + Math.round(m.capacity/1048576) +
                        '</td><td>' + Math.round(m.availableCapacity/1048576) +
@@ -81,7 +74,6 @@ function UpdateMem() {
     });
   }
   catch (err) {
-    // chrome.system.memory not supported
     mem.innerHTML = htm + '<tr><td colspan="4">NaN</td></tr>';
   }
 }
@@ -105,7 +97,6 @@ function UpdateStorage() {
     });
   }
   catch (err) {
-    // chrome.system.storage not supported
     sto.innerHTML = htm + '<tr><td colspan="4">NaN</td></tr>';
   }
 }
@@ -116,7 +107,6 @@ function UpdateDisplay() {
                   '<th width="25%">resolution</th>' +
                   '<th width="25%">dpi</th>';
   try {
-    //throw "display";
     sys.display.getInfo(function(d) {
       for (var i = 0; i < d.length; i++) {
         htm += '<tr><td>' + d[i].isPrimary +
@@ -129,7 +119,6 @@ function UpdateDisplay() {
     });
   }
   catch (err) {
-    // chrome.system.display not supported
     lcd.innerHTML = htm + '<tr><td colspan="4">NaN</td></tr>';
   }
 }
@@ -138,7 +127,6 @@ function UpdateNetwork() {
   var net = document.querySelector('#network');
   var htm = '<tr><th width="50%">name</th><th>address</th></tr>';
   try {
-    //throw "network";
     sys.network.getNetworkInterfaces(function(n) {
       for (var i = 0; i < n.length; i++) {
         htm += '<tr><td>' + n[i].name + '</td><td>' + n[i].address +
@@ -148,7 +136,6 @@ function UpdateNetwork() {
     });
   }
   catch (err) {
-    // chrome.system.network not supported
     net.innerHTML = htm + '<tr><td colspan="2">NaN</td></tr>';
   }
 }
