@@ -5,8 +5,15 @@
   "description": "Description for Helloworld",
   "version": "0.0.1.1",
   "minimum_chrome_version": "30",
+
   "icons": {
     "16": "assets/icon_16.png",
+    "24": "assets/icon_24.png",
+    "36": "assets/icon_36.png",
+    "48": "assets/icon_48.png",
+    "64": "assets/icon_64.png",
+    "72": "assets/icon_72.png",
+    "96": "assets/icon_96.png",
     "128": "assets/icon_128.png"
   },
 
