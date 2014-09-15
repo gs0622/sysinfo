@@ -1,8 +1,9 @@
 sysinfo
 =======
 
-System Information Summary base on Chrome system javascript API
+System Information base on Chrome system javascript API
 
+=======
 #### Used API
 
 | Name          | Description                   | Since |
@@ -13,3 +14,9 @@ System Information Summary base on Chrome system javascript API
 | system.display| [query display metadata](https://developer.chrome.com/apps/system.display)    | 30    |
 | system.network| [query network device info](https://developer.chrome.com/apps/system.network) | 33    |
 
+=======
+#### Snapshots
+
+| Windows    | Ubuntu     | Android    |
+|:----------:|:----------:|:----------:|
+| ![alt text][assets/windows.png] | ![alt text][assets/ubuntu.png] | ![alt text][assets/android.png] |
