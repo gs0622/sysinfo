@@ -19,4 +19,4 @@ System Information base on Chrome system javascript API
 
 | Windows    | Ubuntu     | Android    |
 |:----------:|:----------:|:----------:|
-| ![alt text][assets/windows.png] | ![alt text][assets/ubuntu.png] | ![alt text][assets/android.png] |
+| ![windows](assets/windows.png) | ![ubuntu](assets/ubuntu.png) | ![android](assets/android.png) |
