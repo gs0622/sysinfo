@@ -21,5 +21,4 @@ System Information base on Chrome system javascript API
 |:----------:|:----------:|
 | ![windows](assets/windows.png) | ![ubuntu](assets/ubuntu.png) |
 | Mac        | Android    |
-|:----------:|:----------:|
 | ![mac](assets/mac.png) | ![android](assets/android.png) |
