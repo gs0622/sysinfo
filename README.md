@@ -17,6 +17,9 @@ System Information base on Chrome system javascript API
 =======
 #### Snapshots
 
-| Windows    | Ubuntu     | Android    |
-|:----------:|:----------:|:----------:|
-| ![windows](assets/windows.png) | ![ubuntu](assets/ubuntu.png) | ![android](assets/android.png) |
+| Windows    | Ubuntu     |
+|:----------:|:----------:|
+| ![windows](assets/windows.png) | ![ubuntu](assets/ubuntu.png) |
+| Mac        | Android    |
+|:----------:|:----------:|
+| ![mac](assets/mac.png) | ![android](assets/android.png) |
