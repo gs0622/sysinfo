@@ -17,11 +17,11 @@ System Information base on Chrome system javascript API
 =======
 #### Snapshots
 
-| Windows    | Ubuntu     |
-|:----------:|:----------:|
-| ![windows](assets/windows.png) | ![ubuntu](assets/ubuntu.png) |
+| Windows    | Ubuntu     | Mac        |
+|:----------:|:----------:|:----------:|
+| ![windows](assets/windows.png) | ![ubuntu](assets/ubuntu.png) | ![mac](assets/mac.png) |
 
 
-| Mac        | Android    |
+| Android    | Chrome OS  |
 |:----------:|:----------:|
-| ![mac](assets/mac.png) | ![android](assets/android.png) |
+| ![android](assets/android.png) | ![chromeos](assets/chromeos.png) |
