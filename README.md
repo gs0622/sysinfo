@@ -29,7 +29,7 @@ System Information base on Chrome system javascript API
 
 =======
 #### Howto
-On Windows/Ubuntu/Mac, go to [chrome://extensions][chrome://extensions], press the button of **Load unpacked extension...**, then load this project folder.
+On Windows/Ubuntu/Mac with Chrome browser, go to **chrome://extensions**, press **Load unpacked extension...** button, then load this project folder.
 
 On Android, use [Chrome Dev Editor](https://github.com/dart-lang/chromedeveditor) to open this project, then deploy to mobile.
 
