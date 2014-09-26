@@ -25,3 +25,12 @@ System Information base on Chrome system javascript API
 | Android    | Chrome OS  |
 |:----------:|:----------:|
 | ![android](assets/android.png) | ![chromeos](assets/chromeos.png) |
+
+
+=======
+#### Howto
+On Windows/Ubuntu/Mac, go to chrome://extensions, press the button of 'Load unpacked extension...', the load this project folder.
+On Android, use [Chrome Dev Editor](https://github.com/dart-lang/chromedeveditor) to open this project, then deploy to mobile.
+
+-enjoy
+
