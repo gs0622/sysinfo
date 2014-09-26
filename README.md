@@ -24,7 +24,7 @@ System Information base on Chrome system javascript API
 
 | Android    | Chrome OS  |
 |:----------:|:----------:|
-| ![android](assets/android.png) | ![chromeos](assets/chromeos.png) |
+| ![android](assets/android.png) | ![chromeos](assets/chromeos.jpg) |
 
 
 =======
